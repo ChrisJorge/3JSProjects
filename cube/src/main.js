@@ -28,12 +28,17 @@ controls.autoRotate = true
 renderer.setSize(window.innerWidth, window.innerHeight)
 
 const colorInput = document.querySelector('.colorInput')
+const rotateInput = document.querySelector('.rotateInput')
 
 colorInput.addEventListener('input', () => {
   cubeColor = new Three.Color(`${colorInput.value}`)
   let cubeMaterial = new Three.MeshBasicMaterial({color: cubeColor})
   cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial)
   scene.add(cubeMesh)
+})
+
+rotateInput.addEventListener('click', () => {
+  controls.autoRotate = rotateInput.checked
 })
 
 const renderLoop = () => {
