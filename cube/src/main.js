@@ -1,24 +1,35 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import * as Three from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const scene = new Three.Scene();
 
-setupCounter(document.querySelector('#counter'))
+const cubeGeometry = new Three.BoxGeometry(1,1,1)
+const cubeColor = new Three.Color("rgb(45,57,216)")
+const cubeMaterial = new Three.MeshBasicMaterial({color: cubeColor})
+const cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial)
+
+scene.add(cubeMesh)
+
+const camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 30)
+
+camera.position.z = 2
+
+scene.add(camera)
+
+const canvas = document.querySelector('.threeJS')
+
+const renderer = new Three.WebGLRenderer({canvas: canvas})
+
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+controls.autoRotate = true
+
+RenderTarget.setSize(window.innerWidth, window.innerHeight)
+
+const renderLoop = () => {
+  controls.update()
+  renderer.render(scene, camera)
+  window.requestAnimationFrame(renderLoop)
+}
+
+renderLoop()
