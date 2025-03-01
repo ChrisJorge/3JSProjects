@@ -18,13 +18,13 @@ scene.add(camera)
 
 const canvas = document.querySelector('.threeJS')
 
-const renderer = new Three.WebGLRenderer({canvas: canvas})
+const renderer = new Three.WebGLRenderer({canvas : canvas})
 
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.autoRotate = true
 
-RenderTarget.setSize(window.innerWidth, window.innerHeight)
+renderer.setSize(window.innerWidth, window.innerHeight)
 
 const renderLoop = () => {
   controls.update()
