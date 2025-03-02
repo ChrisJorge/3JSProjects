@@ -1,11 +1,10 @@
 import * as Three from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 
-
 const scene = new Three.Scene();
 
 const cubeGeometry = new Three.BoxGeometry(1,1,1)
-let cubeColor = new Three.Color("rgb(45,57,216)")
+let cubeColor = new Three.Color("#787FE8")
 let cubeMaterial = new Three.MeshBasicMaterial({color: cubeColor})
 let cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial)
 
@@ -22,13 +21,14 @@ const canvas = document.querySelector('.threeJS')
 const renderer = new Three.WebGLRenderer({canvas : canvas})
 
 const controls = new OrbitControls(camera, canvas)
+
 controls.enableDamping = true
-controls.autoRotate = true
 
 renderer.setSize(window.innerWidth, window.innerHeight)
 
 const colorInput = document.querySelector('.colorInput')
-const rotateInput = document.querySelector('.rotateInput')
+
+let rotationAxis = 'None'
 
 colorInput.addEventListener('input', () => {
   cubeColor = new Three.Color(`${colorInput.value}`)
@@ -37,11 +37,29 @@ colorInput.addEventListener('input', () => {
   scene.add(cubeMesh)
 })
 
-rotateInput.addEventListener('click', () => {
-  controls.autoRotate = rotateInput.checked
-})
+const rotateArr = document.querySelectorAll('.rotateRadio')
+
+for(let i = 0; i < rotateArr.length; i ++)
+{
+  rotateArr[i].addEventListener('click', () => {
+    let axis = rotateArr[i].id
+    rotationAxis = axis
+  })
+}
 
 const renderLoop = () => {
+  switch(rotationAxis){
+    case 'x':
+      cubeMesh.rotation.x += 0.007
+      break;
+    case 'y':
+      cubeMesh.rotation.y += 0.007
+      break;
+    case 'z':
+      cubeMesh.rotation.z += 0.007
+      break; 
+  }
+  renderer.setSize(window.innerWidth, window.innerHeight)
   controls.update()
   renderer.render(scene, camera)
   window.requestAnimationFrame(renderLoop)

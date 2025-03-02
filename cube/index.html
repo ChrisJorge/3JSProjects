@@ -9,10 +9,17 @@
     <div class="optionsContainer">
       <div class="colorContainer">
         <label class="colorLabel" >Color</label>
-        <input type="color" class="colorInput" value="#122DAF">
+        <input type="color" class="colorInput" value="#787FE8">
         <br/>
         <label for="rotate" class="rotateLabel">Rotate</label>
-        <input type="checkbox" class="rotateInput" id="rotate" checked="true">
+        <input type="radio" id="x" name="rotate" class="rotateRadio" value="x">
+        <label for="x">X</label>
+        <input type="radio" id="y" name="rotate" class="rotateRadio" value="y">
+        <label for="y">Y</label>
+        <input type="radio" id="z" name="rotate" class="rotateRadio" value="z">
+        <label for="z">Z</label>
+        <input type="radio" id="none" name="rotate" class="rotateRadio" value="none" checked = 'true'>
+        <label for="none">None</label>
       </div>
     </div>
     <canvas class="threeJS"></canvas>
