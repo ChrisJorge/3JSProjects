@@ -7,6 +7,9 @@ const cubeGeometry = new Three.BoxGeometry(1,1,1)
 let cubeColor = new Three.Color("#787FE8")
 let cubeMaterial = new Three.MeshBasicMaterial({color: cubeColor})
 let cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial)
+let cubeXRotation = 0
+let cubeYRotation = 0
+let cubeZRotation = 0 
 
 scene.add(cubeMesh)
 
@@ -35,6 +38,9 @@ colorInput.addEventListener('input', () => {
   cubeColor = new Three.Color(`${colorInput.value}`)
   let cubeMaterial = new Three.MeshBasicMaterial({color: cubeColor})
   cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial)
+  cubeMesh.rotation.x = cubeXRotation
+  cubeMesh.rotation.y = cubeYRotation
+  cubeMesh.rotation.z = cubeZRotation
   scene.add(cubeMesh)
 })
 
@@ -51,13 +57,16 @@ for(let i = 0; i < rotateArr.length; i ++)
 const renderLoop = () => {
   switch(rotationAxis){
     case 'x':
-      cubeMesh.rotation.x += 0.007
+      cubeXRotation += 0.007
+      cubeMesh.rotation.x = cubeXRotation
       break;
     case 'y':
-      cubeMesh.rotation.y += 0.007
+      cubeYRotation += 0.007
+      cubeMesh.rotation.y = cubeYRotation
       break;
     case 'z':
-      cubeMesh.rotation.z += 0.007
+      cubeZRotation += 0.007
+      cubeMesh.rotation.z = cubeZRotation
       break; 
   }
   renderer.setSize(window.innerWidth, window.innerHeight)
