@@ -31,6 +31,7 @@ const colorInput = document.querySelector('.colorInput')
 let rotationAxis = 'None'
 
 colorInput.addEventListener('input', () => {
+  scene.remove(cubeMesh)
   cubeColor = new Three.Color(`${colorInput.value}`)
   let cubeMaterial = new Three.MeshBasicMaterial({color: cubeColor})
   cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial)
