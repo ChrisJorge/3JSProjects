@@ -31,6 +31,12 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 
 const colorInput = document.querySelector('.colorInput')
 
+const xInputSlider = document.querySelector('.xSizeInputSlider')
+
+let xSize = 1
+
+const xTextBox = document.querySelector('.xSizeInputText')
+
 let rotationAxis = 'None'
 
 colorInput.addEventListener('input', () => {
@@ -41,11 +47,48 @@ colorInput.addEventListener('input', () => {
   cubeMesh.rotation.x = cubeXRotation
   cubeMesh.rotation.y = cubeYRotation
   cubeMesh.rotation.z = cubeZRotation
+  cubeMesh.scale.x = xSize
   scene.add(cubeMesh)
 })
 
-const rotateArr = document.querySelectorAll('.rotateRadio')
+xInputSlider.addEventListener('input', () => {
+  xSize = xInputSlider.value
+  cubeMesh.scale.x = xInputSlider.value
+  xTextBox.value = xInputSlider.value
+})
 
+xTextBox.addEventListener('input', () => {
+
+  if(xTextBox.value == '')
+    {
+      
+    }
+  else
+  {
+    let val = parseFloat(xTextBox.value)
+    console.log(val)
+    if (xTextBox.value <= -1)
+      {
+        console.log('We inside 1')
+        xSize = 0
+      }
+      else if (xTextBox.value > 10)
+      {
+        console.log('We inside 2')
+        xSize = 10
+      }
+      else
+      {
+        console.log('We inside 3')
+        xSize = xTextBox.value
+      }
+    
+      cubeMesh.scale.x = xSize
+      xInputSlider.value = xSize
+      xTextBox.value = xSize
+  }
+  })
+const rotateArr = document.querySelectorAll('.rotateRadio')
 for(let i = 0; i < rotateArr.length; i ++)
 {
   rotateArr[i].addEventListener('click', () => {

@@ -20,6 +20,13 @@
         <label for="z">Z</label>
         <input type="radio" id="none" name="rotate" class="rotateRadio" value="none" checked = 'true'>
         <label for="none">None</label>
+        <br/>
+        <div class="modifySizeContainer">
+          <label class="xSizeLabel">X-Scale</label>
+          <input type="range" class="xSizeInputSlider" name="xSize" min="0.0" max="10" value="1.0" step="0.1">
+          <input type="text" class="xSizeInputText" value="1.0">
+        </div>
+       
       </div>
     </div>
     <canvas class="threeJS"></canvas>
