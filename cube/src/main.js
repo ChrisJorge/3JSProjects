@@ -55,7 +55,7 @@ scene.add(cubeMesh)
 
 const camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 30)
 
-camera.position.z = 4
+camera.position.z = 2
 
 scene.add(camera)
 
@@ -154,7 +154,7 @@ yTextBox.addEventListener('input', () => {
 
 zInputSlider.addEventListener('input', () => {
   zSize = zInputSlider.value
-  cubeMesh.sccale.z = zInputSlider.value
+  cubeMesh.scale.z = zInputSlider.value
   zTextBox.value = zInputSlider.value
 })
 
