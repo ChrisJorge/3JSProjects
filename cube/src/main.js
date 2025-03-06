@@ -55,7 +55,8 @@ scene.add(cubeMesh)
 
 const camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 30)
 
-camera.position.z = 2
+
+window.innerWidth > 800 ? camera.position.z = 2 : camera.position.z = 3
 
 scene.add(camera)
 
