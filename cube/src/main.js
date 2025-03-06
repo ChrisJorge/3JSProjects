@@ -1,6 +1,46 @@
 import * as Three from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 
+const validateNumber = (number) => {
+  console.log(typeof(number))
+  if (isNaN(number) == true)
+    {
+      return -1
+    }
+  else if (number < 0)
+    {
+      return 0
+    }
+  else if (number > 10)
+    {
+      return 10
+    }
+  else
+  {
+    return number
+  }
+}
+
+const checkString = (string) => {
+
+  for(let index = 0; index < string.length; index++)
+  {
+    if (string[index] == '.' && index == string.length - 1)
+      {
+        return true
+      } 
+  }
+  return false
+}
+
+const validateScaleInput = (scaleInput) => {
+
+  let containsPeriod = checkString(scaleInput)
+
+  return containsPeriod ? -1 : validateNumber(parseFloat(scaleInput))
+
+}
+
 const scene = new Three.Scene();
 
 const cubeGeometry = new Three.BoxGeometry(1,1,1)
@@ -33,9 +73,19 @@ const colorInput = document.querySelector('.colorInput')
 
 const xInputSlider = document.querySelector('.xSizeInputSlider')
 
-let xSize = 1
-
 const xTextBox = document.querySelector('.xSizeInputText')
+
+const yInputSlider = document.querySelector('.ySizeInputSlider')
+
+const yTextBox = document.querySelector('.ySizeInputText')
+
+const zInputSlider = document.querySelector('.zSizeInputSlider')
+
+const zTextBox = document.querySelector('.zSizeInputText')
+
+let xSize = 1
+let ySize = 1
+let zSize = 1
 
 let rotationAxis = 'None'
 
@@ -58,37 +108,48 @@ xInputSlider.addEventListener('input', () => {
 })
 
 xTextBox.addEventListener('input', () => {
-
-  if(xTextBox.value == '')
+    let val = validateScaleInput(xTextBox.value)
+    
+    if(val == -1)
     {
-      
+      xSize = xTextBox.value
     }
+    else
+    {
+      xSize = val
+    }
+
+    cubeMesh.scale.x = xSize
+    xInputSlider.value = xSize
+    xTextBox.value = xSize
+  })
+
+yInputSlider.addEventListener('input', () => {
+  ySize = yInputSlider.value
+  cubeMesh.scale.y = yInputSlider.value
+  yTextBox.value = yInputSlider.value
+})
+
+yTextBox.addEventListener('input', () => {
+  let val = validateScaleInput(yTextBox.value)
+
+  if(val == -1)
+  {
+    ySize = yTextBox.value
+  }
   else
   {
-    let val = parseFloat(xTextBox.value)
-    console.log(val)
-    if (xTextBox.value <= -1)
-      {
-        console.log('We inside 1')
-        xSize = 0
-      }
-      else if (xTextBox.value > 10)
-      {
-        console.log('We inside 2')
-        xSize = 10
-      }
-      else
-      {
-        console.log('We inside 3')
-        xSize = xTextBox.value
-      }
-    
-      cubeMesh.scale.x = xSize
-      xInputSlider.value = xSize
-      xTextBox.value = xSize
+    ySize = val 
   }
-  })
+
+  cubeMesh.scale.y = ySize 
+  yInputSlider.value = ySize
+  yTextBox.value = ySize
+})
+
+
 const rotateArr = document.querySelectorAll('.rotateRadio')
+
 for(let i = 0; i < rotateArr.length; i ++)
 {
   rotateArr[i].addEventListener('click', () => {

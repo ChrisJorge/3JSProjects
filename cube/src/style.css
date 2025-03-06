@@ -25,7 +25,7 @@ body{
   box-shadow: rgba(9, 11, 17, 0.5) 0px 5px 15px 0px, rgba(19, 23, 32, 0.08) 0px 15px 35px -5px;
 }
 
-.colorLabel, .rotateLabel, .xSizeLabel, .rotateRadio, .xSizeLabel{
+.label{
   color:hsl(220, 20%, 65%);
     font-family: Inter, "sans-serif";
     font-weight: 400;
@@ -61,10 +61,10 @@ body{
   align-items: center;
 }
 
-.xSizeInputSlider, .xSizeInputText{
+.inputSlider, .inputText{
   width: 25%;
 }
 
-.xSizeInputText{
+.inputText{
   margin-left: 10px;
 }

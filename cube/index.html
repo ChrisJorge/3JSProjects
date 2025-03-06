@@ -8,10 +8,10 @@
   <body>
     <div class="optionsContainer">
       <div class="colorContainer">
-        <label class="colorLabel" >Color</label>
+        <label class="label">Color</label>
         <input type="color" class="colorInput" value="#787FE8">
         <br/>
-        <label for="rotate" class="rotateLabel">Rotate</label>
+        <label for="rotate" class="label">Rotate</label>
         <input type="radio" id="x" name="rotate" class="rotateRadio" value="x">
         <label for="x">X</label>
         <input type="radio" id="y" name="rotate" class="rotateRadio" value="y">
@@ -22,11 +22,20 @@
         <label for="none">None</label>
         <br/>
         <div class="modifySizeContainer">
-          <label class="xSizeLabel">X-Scale</label>
-          <input type="range" class="xSizeInputSlider" name="xSize" min="0.0" max="10" value="1.0" step="0.1">
-          <input type="text" class="xSizeInputText" value="1.0">
+          <label class="label">X-Scale</label>
+          <input type="range" class="xSizeInputSlider inputSlider" name="xSize" min="0.0" max="10" value="1.0" step="0.1">
+          <input type="text" class="xSizeInputText inputText" value="1.0">
         </div>
-       
+        <div class="modifySizeContainer">
+          <label class="label">Y-Scale</label>
+          <input type="range" class="ySizeInputSlider inputSlider" name="ySize" min="0.0" max="10" value="1.0" step="0.1">
+          <input type="text" class="ySizeInputText inputText" value="1.0">
+        </div>
+        <div class="modifySizeContainer">
+          <label class="label">Z-Scale</label>
+          <input type="range" class="zSizeInputSlider inputSlider" name="zSize" min="0.0" max="10" value="1.0" step="0.1">
+          <input type="text" class="zSizeInputText inputText" value="1.0">
+        </div>
       </div>
     </div>
     <canvas class="threeJS"></canvas>
