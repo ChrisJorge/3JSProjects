@@ -55,7 +55,7 @@ scene.add(cubeMesh)
 
 const camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 30)
 
-camera.position.z = 2
+camera.position.z = 4
 
 scene.add(camera)
 
@@ -67,7 +67,10 @@ const controls = new OrbitControls(camera, canvas)
 
 controls.enableDamping = true
 
+console.log(window.innerWidth, window.innerHeight)
 renderer.setSize(window.innerWidth, window.innerHeight)
+const maxPixelRatio = Math.min(window.devicePixelRatio, 2)
+renderer.setPixelRatio(maxPixelRatio)
 
 const colorInput = document.querySelector('.colorInput')
 
@@ -98,6 +101,8 @@ colorInput.addEventListener('input', () => {
   cubeMesh.rotation.y = cubeYRotation
   cubeMesh.rotation.z = cubeZRotation
   cubeMesh.scale.x = xSize
+  cubeMesh.scale.y = ySize
+  cubeMesh.scale.z = zSize
   scene.add(cubeMesh)
 })
 
@@ -147,6 +152,28 @@ yTextBox.addEventListener('input', () => {
   yTextBox.value = ySize
 })
 
+zInputSlider.addEventListener('input', () => {
+  zSize = zInputSlider.value
+  cubeMesh.sccale.z = zInputSlider.value
+  zTextBox.value = zInputSlider.value
+})
+
+zTextBox.addEventListener('input', () => {
+  let val = validateScaleInput(zTextBox.value)
+
+  if(val == -1)
+  {
+    zSize = zTextBox.value
+  }
+  else
+  {
+    zSize = val
+  }
+
+  cubeMesh.scale.z = zSize
+  zInputSlider.value = zSize
+  zTextBox.value = zSize
+})
 
 const rotateArr = document.querySelectorAll('.rotateRadio')
 
@@ -157,6 +184,12 @@ for(let i = 0; i < rotateArr.length; i ++)
     rotationAxis = axis
   })
 }
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight // Gets the aspect ratio of the application
+  camera.updateProjectionMatrix() // Update the projection to maintain the aspect ratio 
+  renderer.setSize(window.innerWidth, window.innerHeight) // Set the size of the window being rendered
+})
 
 const renderLoop = () => {
   switch(rotationAxis){
