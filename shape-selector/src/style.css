@@ -1,0 +1,9 @@
+.cubeCreator{
+    position: absolute;
+    background-color: aliceblue;
+}
+
+body{
+    margin: 0;
+    overflow: hidden;
+  }
