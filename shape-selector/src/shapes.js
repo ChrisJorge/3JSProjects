@@ -5,7 +5,7 @@ export class Cube{
     constructor(scene)
     {
         this.scene = scene
-        this.cubeGeometry = new Three.BoxGeometry(.3,.3,.3);
+        this.cubeGeometry = new Three.BoxGeometry(1,1,1);
         this.cubeColor = new Three.Color("#787FE8");
         this.cubeMaterial = new Three.MeshBasicMaterial({color: this.cubeColor});
         this.cubeMesh = new Three.Mesh(this.cubeGeometry, this.cubeMaterial);

@@ -93,7 +93,7 @@ body{
     box-shadow: rgba(9, 11, 17, 0.5) 0px 5px 15px 0px, rgba(19, 23, 32, 0.08) 0px 15px 35px -5px;
   }
 }
-
+ 
 @media all and (min-width: 500px ) and (max-width: 1100px) {
   .optionsContainer{
     position: absolute;
