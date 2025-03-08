@@ -3,7 +3,7 @@ body{
     overflow: hidden;
 }
 
-.topButton{
+.topButton, .createButton{
     position: absolute;
     color: black;
     background-color: rgb(245, 246, 250);
@@ -39,6 +39,10 @@ body{
     /* margin-top: 15px; */
 }
 
+.createButton{
+    margin-top: 15px;
+    width: 100%;
+}
 .optionsContainer{
     position: absolute;
     right: 0%;
@@ -59,4 +63,51 @@ body{
     gap: 10px;
     margin: auto;
     box-shadow: rgba(9, 11, 17, 0.5) 0px 5px 15px 0px, rgba(19, 23, 32, 0.08) 0px 15px 35px -5px;
+}
+
+.label{
+    color:hsl(220, 20%, 65%);
+      font-family: Inter, "sans-serif";
+      font-weight: 400;
+      font-size: 1.275rem;
+      line-height: 1.4375em;
+      padding: 0px;
+      position: relative;
+      margin-bottom: 10px;
+      margin-left: 3%;
+      margin-top: 5px;
+      margin-right: 3%;
+  }
+
+.input{
+    font-family: Inter, "sans-serif";
+    box-sizing: border-box;
+    cursor: text;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 60%;
+    position: relative;
+    padding: 8px 12px;
+    color: hsl(0, 0%, 100%);
+    border-radius: var(--template-shape-borderRadius);
+    border: 1px solid var(--template-palette-divider);
+    background-color: hsl(220, 35%, 3%);
+    transition: border 120ms ease-in;
+    height: 2.5rem;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.slider{
+    width: 25%;
+    padding: 0;
+}
+
+.inputText{
+    width: 10%;
+    margin-left: 10px;
 }

@@ -2,11 +2,15 @@ import * as Three from 'three'
 
 
 export class Cube{
-    constructor(scene)
+    constructor(scene, color, xVal, yVal, zVal)
     {
         this.scene = scene
-        this.cubeGeometry = new Three.BoxGeometry(1,1,1);
-        this.cubeColor = new Three.Color("#787FE8");
+        this.color = color
+        this.xVal = xVal
+        this.yVal = yVal
+        this.zVal = zVal
+        this.cubeGeometry = new Three.BoxGeometry(xVal,yVal,zVal);
+        this.cubeColor = new Three.Color(this.color);
         this.cubeMaterial = new Three.MeshBasicMaterial({color: this.cubeColor});
         this.cubeMesh = new Three.Mesh(this.cubeGeometry, this.cubeMaterial);
         this.scene.add(this.cubeMesh)

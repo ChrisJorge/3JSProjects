@@ -9,11 +9,34 @@
   <body>
     <div class="optionsContainer">
       <div class="topOptions">
-        <button class="cubeCreator topButton">Cube</button>
+        <button class="tempClass topButton">Cube</button>
         <button class="circleCreator topButton">Circle</button>
         <button class="circleCreator topButton">Circle</button>
       </div>
-      
+      <div class="cubeCreationOptionsContainer">
+        <div class="cubeContainer container">
+          <label class="label">Color</label>
+          <input type="color" class="cubeColor input" value="#787FE8">
+        </div>
+        <div class="cubeContainer container">
+          <label class="label">X-Scale</label>
+          <input type="range" class="cubeLengthX slider cubeXSlider" min="0.0" max="3.5" value="1" step="0.1">
+          <input type="text" class="cubeLengthX inputText cubeXText" value="1">
+        </div>
+        <div class="cubeContainer container">
+          <label class="label">Y-Scale</label>
+          <input type="range" class="cubeLengthY slider cubeYSlider" min="0.0" max="3.5" value="1" step="0.1">
+          <input type="text" class="cubeLengthY inputText cubeYText" value="1">
+        </div>
+        <div class="cubeContainer container">
+          <label class="label">Z-Scale</label>
+          <input type="range" class="cubeLengthZ slider cubeZSlider" min="0.0" max="3.5" value="1" step="0.1">
+          <input type="text" class="cubeLengthZ inputText cubeZText" value="1">
+        </div>
+        <div class="cubeContainer container">
+          <button class="createButton cubeCreator">Create Cube</button>
+        </div>
+      </div>
     </div>
     <canvas class="threeJS"></canvas>
     <script type="module" src="/src/main.js"></script>
